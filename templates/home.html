@@ -1,0 +1,33 @@
+<html>
+	<head>
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+		<title>VK</title>
+	</head>
+	<body>
+		<div class="jumbotron">
+			{% if user and user.is_anonymous  %}
+				<a href="/login/vk-oauth2"><button type="button" class="btn btn-warning">login with vk</button></a>
+			{% else  %}
+				<h2>Добрый день, {{ name }}!</h2>
+				<table class=width="25%" border="10" cellspacing="100" cellpadding="25">
+					<thead>
+						<tr>
+							<td style="margin-left:10px">№</td>
+							<td style="width=50%">Имя друга</td>
+						</tr>
+					</thead>
+					<tbody>
+						{% for friend in friends %}
+							<tr>
+								<td>{{ forloop.counter }}</td>
+								<td>{{ friend }}</td>
+							</tr>
+						{% endfor %}
+					</tbody>
+				</table>
+				
+				<a href="/logout" class="button21"><button type="button" class="btn 
+					btn-primary">logout</button></a>
+			{% endif %}
+		</div>
+</body>
